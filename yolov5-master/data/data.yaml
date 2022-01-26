@@ -1,0 +1,7 @@
+names:
+- '0'
+- '1'
+nc: 2
+train: BarcodeDetection-v2-1/train/images
+val: BarcodeDetection-v2-1/valid/images
+names: ['nothing', "barcode"]
