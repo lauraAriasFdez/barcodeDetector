@@ -15,3 +15,22 @@ pip install requirements.txt
 # PROGRESS TO NOTE
 - edgde_detect_barcode.py not really working as it is not reliable
 - yolov5 model started on BARCODE_SCANNER.ipynb  (barcode_model.pt downloaded from there)
+
+
+# RESOURCES
+### Grocery item deteciton: 
+1. http://students.washington.edu/bhimar/highlights/2020-12-18-GrocerEye/
+2. Dataset: Frieburg grocery dataset https://paperswithcode.com/dataset/freiburg-groceries
+             https://paperswithcode.com/dataset/grocery-store, 
+
+https://github.com/glovo/foodi-ml-dataset
+
+
+# MY PLAN
+ 1. Given barcode scanner integrated with camera and library to detect barcodes
+
+ 2. Read yolov5 papers on how to better improve model and compare model
+
+ 3. Train model on how to distinguish grocery items and improve barcode model
+
+ 4. Put a front end part such as flask 
