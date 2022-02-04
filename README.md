@@ -32,6 +32,7 @@ https://docs.google.com/document/d/1_nmwLH6sHvKKXILZZlrdr-wn2X0gufjl75-ZsQqTDrs/
     - Frieburg grocery dataset https://paperswithcode.com/dataset/freiburg-groceries
     - https://paperswithcode.com/dataset/grocery-store
     - https://github.com/glovo/foodi-ml-dataset  (not the best as we need aws)
+    - https://storage.googleapis.com/openimages/web/index.html (could download 30 or 40 classes of product and training them)
 ### DARKNET (Yolov4)
     - https://pjreddie.com/darknet/install/
 
@@ -44,3 +45,16 @@ https://docs.google.com/document/d/1_nmwLH6sHvKKXILZZlrdr-wn2X0gufjl75-ZsQqTDrs/
  3. Train model on how to distinguish grocery items and improve barcode model (yolov4 through darknet)
 
  4. Put a front end part such as flask 
+
+
+ ### Future citation 
+   @article{jund16groceries,
+  author = {Philipp Jund and Nichola Abdo and Andreas Eitel and Wolfram Burgard},
+  title = {The Freiburg Groceries Dataset},
+  booktitle = {CoRR},
+  volume = {abs/1611.05799},
+  year = 2016,
+  url = {https://arxiv.org/abs/1611.05799}
+}
+
+  
