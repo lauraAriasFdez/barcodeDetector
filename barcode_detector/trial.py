@@ -38,6 +38,34 @@ def barcode_obj_detect(path):
     return result # [center_x, center_y, w,h]
 
 
+
+def directions_where_to_move(res):
+    print("Barcode detected but could not scan PLEASE: ")
+    center_x,center_y,b_width,b_height = res #0.52524 0.484375 0.112981 0.0649038
+
+    """
+    if center to close to the right (close to 1) bring to the left
+    if center to close to the left (close to 0) bring to the right
+
+    if height to small (close to zero) bring closer
+    if height to large (close to 1) bring further away 
+    """
+    if (center_x>0.75):
+        print("move object to the LEFT")
+    elif (center_x < 0.25):
+        print ("move object to the RIGHT")
+    
+    elif (center_y>0.75):
+        print("move object UP")
+    elif (center_y < 0.25):
+        print("move object DOWN")
+
+    elif(b_height < 0.15):
+        print("bring object CLOSER")
+    elif (b_height >= 0.40):
+        print("bring object FURTHER AWAY")
+    
+
 ## BARCODE DETECTION WITH OPEN CV
 import pyzbar.pyzbar as zbar
 def check_barcode(img):
@@ -48,8 +76,8 @@ def video_capture():
     capture = cv2.VideoCapture(0)
 
     #size of the screen shown 
-    capture.set(3,416)#width
-    capture.set(3,416)#height
+    capture.set(3,480)#width
+    capture.set(3,640)#height
 
     ## start time out for camera
     startTime =  time.time()
@@ -68,9 +96,10 @@ def video_capture():
             cv2.imshow("Frame",img)
             barcodes = check_barcode(img)
             if barcodes != []:
+                print ("BARCODE DETECTED___________________")
                 return barcodes
             else:
-                if (timeElapsed%30==0):
+                if (timeElapsed%10==0):
                     #every 30 second run obj detector to check if barcode is present 
                     #check barcode if exists cut it and pass it to check barcodes
                     #resize img
@@ -84,9 +113,6 @@ def video_capture():
                         width,height,_ = resized.shape
                         center_x = int (width* xcenter)
                         center_y = int(height *ycenter)
-                        print ("the center is ",center_x," ", center_y)
-                        print ("the shap is ",img.shape)
-
                         obj_height  = int(height * b_height)
                         obj_width = int(width * b_width)
 
@@ -95,9 +121,14 @@ def video_capture():
                         xmax = center_x + obj_width
                         ymax = center_y + obj_height
 
-                        cv2.rectangle(resized, (xmin, ymin), (xmax, ymax), (0, 255, 0))
-                        imshow("img",resized)
-                        waitKey(0)
+                        cropped_img = resized[ymin:ymax,xmin:xmax]
+                        barcodes = check_barcode(cropped_img)
+                        if barcodes != []:
+                            print ("BARCODE DETECTED___________________")
+                            return barcodes
+
+                        else:
+                            directions_where_to_move(res)
 
                 
         else:
