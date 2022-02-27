@@ -10,9 +10,10 @@ from cv2 import imshow
 from cv2 import waitKey
 from prettytable import NONE 
 results_path = "../yolov5-master/runs/detect/barcode/labels/results.txt"
-timeout_video = 60
+timeout_video = 120
 
 from os.path import exists
+from speech_recog import speak
 
 
 def barcode_obj_detect(path):
@@ -28,7 +29,6 @@ def barcode_obj_detect(path):
         # get txt value
         for line in f:
             if line[0] =="1":
-                print("barcode detected")
                 result = line.split(" ")
                 result = result[1: ]
                 for i in range(len(result)):
@@ -40,7 +40,6 @@ def barcode_obj_detect(path):
 
 
 def directions_where_to_move(res):
-    print("Barcode detected but could not scan PLEASE: ")
     center_x,center_y,b_width,b_height = res #0.52524 0.484375 0.112981 0.0649038
 
     """
@@ -51,19 +50,31 @@ def directions_where_to_move(res):
     if height to large (close to 1) bring further away 
     """
     if (center_x>0.75):
-        print("move object to the LEFT")
+        print("move object to the RIGHT")
+        speak("move object to the RIGHT")
     elif (center_x < 0.25):
-        print ("move object to the RIGHT")
+        print ("move object to the LEFT")
+        speak ("move object to the LEFT")
     
     elif (center_y>0.75):
         print("move object UP")
+        speak("move object UP")
+
     elif (center_y < 0.25):
         print("move object DOWN")
+        speak("move object DOWN")
 
     elif(b_height < 0.15):
         print("bring object CLOSER")
+        speak("bring object CLOSER")
     elif (b_height >= 0.40):
         print("bring object FURTHER AWAY")
+        speak("bring object FURTHER AWAY")
+    
+    else:
+        print("barcode in frame but not scanned, rotate object")
+        speak("barcode in frame but not scanned, rotate object")
+
     
 
 ## BARCODE DETECTION WITH OPEN CV
@@ -89,6 +100,8 @@ def video_capture():
         ## TIME LIMIT TO FIND BARCODE
         timeElapsed = int (time.time() - startTime)
         if (timeElapsed > timeout_video):
+            print ("END TIMEOUT")
+            speak("ENDING PROGRAM TIMEOUT")
             return -1
 
         # If image capture correctly 
@@ -97,6 +110,7 @@ def video_capture():
             barcodes = check_barcode(img)
             if barcodes != []:
                 print ("BARCODE DETECTED___________________")
+                speak ("BARCODE DETECTED")
                 return barcodes
             else:
                 if (timeElapsed%10==0):
@@ -122,14 +136,22 @@ def video_capture():
                         ymax = center_y + obj_height
 
                         cropped_img = resized[ymin:ymax,xmin:xmax]
-                        barcodes = check_barcode(cropped_img)
+                        
+                        try: 
+                            cv2.imwrite("../yolov5-master/runs/detect/cropped.jpg", cropped_img) 
+                            barcodes = check_barcode(cropped_img)
+                        except:
+                            pass
+
                         if barcodes != []:
                             print ("BARCODE DETECTED___________________")
+                            speak ("BARCODE DETECTED")
                             return barcodes
 
                         else:
                             directions_where_to_move(res)
-
+                    else:
+                        speak("barcode not in frame")
                 
         else:
             print ("camera could not read image")
@@ -142,3 +164,5 @@ def video_capture():
 
 #barcode_obj_detect("./melinda.jpg")
 video_capture()
+
+
