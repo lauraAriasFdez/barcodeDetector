@@ -8,7 +8,7 @@ import cv2
 import time
 from cv2 import imshow
 from cv2 import waitKey
-from prettytable import NONE 
+
 results_path = "../yolov5-master/runs/detect/barcode/labels/results.txt"
 timeout_video = 120
 
@@ -163,6 +163,7 @@ def video_capture():
 
 
 #barcode_obj_detect("./melinda.jpg")
-video_capture()
+if __name__ == '__main__':
+    video_capture()
 
 
