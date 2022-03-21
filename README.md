@@ -1,13 +1,10 @@
 
-## WEEKLY MEETINGS SCHEDULE
-https://docs.google.com/document/d/1_nmwLH6sHvKKXILZZlrdr-wn2X0gufjl75-ZsQqTDrs/edit
-
 
 ## REQUIREMENTS TO RUN YOLOV5 ON YOUR COMPUTER (make sure to be in yolov5-master folder directory)
 
 - cuda
 - pythorch 
-- pip3 install -r requirements.txt
+- pip3 install -r yolov5-master/requirements.txt
 
 ## COMMAND TO RUN YOLOV5 model on camera
 -(basic model of yolo): python detect.py --source 0
@@ -18,11 +15,7 @@ https://docs.google.com/document/d/1_nmwLH6sHvKKXILZZlrdr-wn2X0gufjl75-ZsQqTDrs/
 
 - edgde_detect_barcode.py not really working as it is not reliable
 - yolov5 model started on BARCODE_SCANNER.ipynb  (barcode_model.pt downloaded from there)
-- run into a lot of issues with cuda (broke my computer :( )
-- currently studying yolov4 to train grocery detection
 
-## Why Yolov4 for groceries
-- documentation is better and it can be easier deployed for backend 
 
 
 ## RESOURCES

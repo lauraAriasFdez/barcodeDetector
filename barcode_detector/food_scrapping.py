@@ -120,18 +120,14 @@ from bs4 import BeautifulSoup
 import requests
 from requests.api import head
 
-"""
-
-pip install beautifulsoup4
-pip install lxml 
-pip install requests 
-"""
 
 ## Global
 timeout_video = 60
 
 ## BARCODE DETECTION WITH OPEN CV
 def decode_barcode(barcodes):
+    if barcodes==None:
+        return None
     for barcode in barcodes:
         bc = (barcode.data)
         bc = ("".join(filter(str.isdigit, str(bc))))
@@ -235,10 +231,13 @@ def web_scrapping(code_num):
 
     # Name of product
     
-    name = content.find ('h1',itemprop="name").text
-    if (name == None or name == ""):
+    name = content.find ('h1',itemprop="name")
+    if (name == None or name.text == ""):
         name = content.find (lambda tag:tag.name=="p" and "Common name:" in tag.text)
-        name = error_web_scraping_handling (name,"Common name: ")    
+        name = error_web_scraping_handling (name,"Common name: ")   
+    else:
+        name = name.text
+
     
 
     # Possible Alergies of Product

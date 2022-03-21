@@ -1,7 +1,4 @@
-#pip install SpeechRecognition
-#pip install gtts
-#pip install playsound==1.2.2
-# pip3 install pyttsx3
+
 
 import speech_recognition as sr
 
@@ -17,7 +14,7 @@ import pyttsx3
 language = "en"
 recog = sr.Recognizer()  #speech to text
 engine = pyttsx3.init()  # text to speech
-activate_word = "alexa"
+activate_word = "alexa" # to listen continuously 
 
 
 # TEXT TO SPEECH
