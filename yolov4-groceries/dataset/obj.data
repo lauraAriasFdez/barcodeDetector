@@ -1,0 +1,5 @@
+classes = 22
+train = data/train.txt
+valid = data/test.txt
+names = data/obj.names
+backup = ../gdrive/MyDrive/UROP/yolov4_dataset/backup
