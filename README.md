@@ -1,5 +1,19 @@
 
 
+Project Created as part of my Undergraduate Research (UMN UROP)
+Faculty Mentor: Maria Gini
+
+[Research Paper](./UROP_Paper.pdf)
+[Research Poster](./Research_Poster.png)
+[Demo](https://www.youtube.com/watch?v=z4ixJT4SuLI)
+<a href="https://www.linkedin.com/in/laura-arias-fernandez-61b121191/">
+    <img align="left" src="https://github.com/lauraAriasFdez/lauraAriasFdez/blob/main/linkedin.png" alt="LinkedIn" width="21px"/>                                                   
+</a>
+
+<a href="mailto:larfer2001@gmail.com">
+    <img align="left" src="https://github.com/lauraAriasFdez/lauraAriasFdez/blob/main/email.png" alt="Email" width="25px"/>                                                   
+</a>
+
 # Overview
 The aim of the project is to develop a robust program that aids visually impared individuals shop at a grocery store. More specifically, the goal is to develop two different tools: (1) a barcode scanner, such that when a product is scanned the user can hear the different ingredients of the product through a speech interface, and (2) an object recognition interface that is able to distinguish between different grocery items, and indicates to the user which product is in front of them. 
 
@@ -27,6 +41,12 @@ The second part of this software is object recognition. To recognize many differ
 
 
  For each of the classes, we gathered a dataset from Open Images, a dataset of ~9M images annotated with image-level labels from Google. We then converted the annotations to the desired format, and used it to start training. Training a neural network of such dimensions is very challenging, and in order to do so I made use of Google codelab, a platform that allows to train the neural networks in s GPU, rather than the CPU of the computer. By leveraging Codelab resources, I was able to accelerate training by saving checkpoints every hour. This task can still take a lot of time, and by the time writing this report training has still not finished, but as figure 3.0 shows we can see slight performance of the neural network.
+
+ [Object Detection Images Examples](./yolov4-groceries/img/)
+ [Object Detection Weights](./yolov4-groceries/weights/)
+Note: I have only uploded the last weights, the best weights and the last iteration saved (80000) to this github repository.
+[Dataset Files](./yolov4-groceries/dataset/)
+Note: The zip files containing the dataset are not uploaded due to its large size. Email me if needed. 
 
 # What is in this directory?
 
