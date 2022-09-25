@@ -1,4 +1,6 @@
 
+The aim of the project is to develop a robust program that aids visually impaired individuals shop at a grocery store. 
+
 <a href="https://www.linkedin.com/in/laura-arias-fernandez-61b121191/">
     <img align="left" src="https://github.com/lauraAriasFdez/lauraAriasFdez/blob/main/linkedin.png" alt="LinkedIn" width="21px"/>                                                   
 </a>
