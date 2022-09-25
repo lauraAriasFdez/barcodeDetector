@@ -1,4 +1,5 @@
 
+# BarcodeDetector
 The aim of the project is to develop a robust program that aids visually impaired individuals shop at a grocery store. 
 
 <a href="https://www.linkedin.com/in/laura-arias-fernandez-61b121191/">
